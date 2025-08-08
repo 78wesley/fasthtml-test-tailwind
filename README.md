@@ -6,7 +6,7 @@ Follow these steps to change the theme of the project:
 2. Go to [https://tweakcn.com/editor/theme](https://tweakcn.com/editor/theme).
 3. In the editor, select **Tailwind v4**.
 4. Click on **Copy** to copy the generated CSS.
-5. Paste the copied CSS into your `index.css` file, replacing the existing content. Keep These values on to
+5. Paste the copied CSS into your `index.css` file, replacing the existing content. Keep these values on top:
     ```tailwind
     @layer theme, base, components, utilities;
     @import "tailwindcss/theme.css" layer(theme);
