@@ -1,12 +1,19 @@
 @layer theme, base, components, utilities;
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/preflight.css" layer(base);
-@import "tailwindcss/utilities.css" layer(utilities);
+@import "tailwindcss";
 
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities;
-@import "tailwindcss/preflight.css" layer(base); */
+
+/* fix for borders */
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-border, currentColor);
+    }
+}
+
+/* \/ Place theme here \/ */
 
 :root {
     --background: oklch(1 0 0);

@@ -1,27 +1,36 @@
 from fasthtml.common import *
 
 
-hdrs = Link(href="/static/index.css", rel="stylesheet")
+hdrs = (
+    Link(href="/static/index.css", rel="stylesheet"),
+    Script(
+        """
+const theme = localStorage.getItem("theme");
+if (theme) {
+    document.documentElement.className = theme;
+}
+""",
+        type="text/javascript",
+    ),
+)
+
 
 app = FastHTML(
     hdrs=hdrs,
     cls="bg-background text-foreground p-6",
     default_hdrs=False,
-    htmlkw={"class": "dark"},
 )
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 def theme_toggle():
-    return Button(
-        "Toggle Theme",
-        onclick="document.documentElement.classList.toggle('dark');",
-        cls="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-8 rounded-md px-3 text-xs mb-4",
+    return (
+        Button(
+            "Toggle Theme",
+            onclick="document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : '');",
+            cls="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-8 rounded-md px-3 text-xs mb-4",
+        ),
     )
-
-
-# TODO
-# https://play.tailwindcss.com/BiIhHAQLXm?file=css shows a normal border....
 
 
 def ShadTest(enabled=False):
