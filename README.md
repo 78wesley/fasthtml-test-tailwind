@@ -20,6 +20,7 @@ Run to update the index.css automatically.
 # Issues
 
 1. Currently the border of the card and some input fields are white, even when there is an border set. Take a look at this [example](https://play.tailwindcss.com/BiIhHAQLXm?file=css). Maybe it comes because of TailwindCSS v4?
+    15-02-2025: Found the solution. It was because I was using the old CSS of tailwind on the new version.... [Source](https://www.shadcnblocks.com/blog/tailwind4-shadcn-themeing/) new [example](https://play.tailwindcss.com/tsmB91YCpe?file=css) 
 
 
 # Download TailwindCSS
